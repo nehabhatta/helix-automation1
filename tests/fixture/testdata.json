@@ -1,0 +1,14 @@
+{
+  "figure": {
+    "date": "2027"
+  },
+  "event": {
+    "EventTittle": "event created for testing purpose"
+  },
+  "entry": {
+    "location": "c",
+    "title1": "E3",
+    "title2": "",
+    "PublishDate": "2027"
+  }
+}
