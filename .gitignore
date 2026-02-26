@@ -8,4 +8,4 @@ node_modules/
 #/playwright/.auth/
 .env
 playwright/.auth
-tests/fixture/testdata.json
+tests/fixture/
