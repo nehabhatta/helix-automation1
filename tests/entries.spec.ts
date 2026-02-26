@@ -16,28 +16,28 @@ test('Verify that the user is able to update an entry and link it to an event', 
     await expect(page.locator('._header_8hzsz_3')).toBeVisible();
 
     await page.locator('._header_8hzsz_3').click();
-    await page.waitForTimeout(5000);
+    //await page.waitForTimeout(5000);
     //second assertions
-    await expect(page.locator('input[name="event"]')).toHaveValue('India Tsunami test');
-    await expect(page.locator('input[name="disasterSubType"]').nth(0)).toHaveValue('Tsunami');
-    await expect(page.locator('input[name="figureCause"]')).toHaveValue('Disaster');
-    await expect(page.locator('input[name="disasterSubType"]').nth(1)).toHaveValue('Earthquake');
-    await expect(page.locator('input[name="country"]')).toHaveValue('India');
+    await expect(page.locator('input[name="event"]')).toHaveValue(testData.entry.event);
+    await expect(page.locator('input[name="disasterSubType"]').nth(0)).toHaveValue(testData.entry.DisasterSubType1);
+    await expect(page.locator('input[name="figureCause"]')).toHaveValue(testData.entry.FigureCause);
+    await expect(page.locator('input[name="disasterSubType"]').nth(1)).toHaveValue(testData.entry.DisasterSubType2);
+    await expect(page.locator('input[name="country"]')).toHaveValue(testData.entry.country1);
 
     await page.getByRole('tab', { name: 'Figure and Analysis' }).click();
     await page.locator('[name="country"]').click();
     await page.locator('button[title="Pakistan"]').click();
     await page.getByRole('button', { name: 'Add location from OSMNames' }).click();
     await page.locator('[name="search"]').fill(testData.entry.location);
-    await page.locator('._description_135v2_4').getByText('c, Johar Town, Punjab, Pakistan').click();
+    await page.locator('._description_135v2_4').getByText(testData.entry.MapLocation).click();
     await page.getByRole('button', { name: 'Submit' }).click();
     await expect(page.locator('._notification-container_12jid_37')).toBeVisible();
     //final assertion
-    await expect(page.locator('input[name="event"]')).toHaveValue('India Tsunami test');
-    await expect(page.locator('input[name="disasterSubType"]').nth(0)).toHaveValue('Tsunami');
-    await expect(page.locator('input[name="figureCause"]')).toHaveValue('Disaster');
-    await expect(page.locator('input[name="disasterSubType"]').nth(1)).toHaveValue('Earthquake');
-    await expect(page.locator('input[name="country"]')).toHaveValue('Pakistan');
+    await expect(page.locator('input[name="event"]')).toHaveValue(testData.entry.event);
+    await expect(page.locator('input[name="disasterSubType"]').nth(0)).toHaveValue(testData.entry.DisasterSubType1);
+    await expect(page.locator('input[name="figureCause"]')).toHaveValue(testData.entry.FigureCause);
+    await expect(page.locator('input[name="disasterSubType"]').nth(1)).toHaveValue(testData.entry.DisasterSubType2);
+    await expect(page.locator('input[name="country"]')).toHaveValue(testData.entry.country2);
 
  });
 test('Verify that entries cannot be updated with missing required fields', async ({ page }) => {
@@ -45,10 +45,10 @@ test('Verify that entries cannot be updated with missing required fields', async
     await expect (page.getByRole('heading', { name: 'Edit Entry' })).toBeVisible();
     await page.getByRole('tab', { name: 'details' }).click();
     //assertion
-    await expect(page.locator('input[name="url"]')).toHaveValue('https://en.wikipedia.org/wiki/2004_Indian_Ocean_earthquake_and_tsunami');
-    await expect(page.locator('input[name="articleTitle"]')).toHaveValue('T3');
-    await expect(page.locator('input[name="publishDate"]')).toHaveValue('2026-12-31');
-    await expect(page.locator('input[name="publishers"]')).toHaveValue('20 minutes - France');
+    await expect(page.locator('input[name="url"]')).toHaveValue(testData.entry.url);
+    await expect(page.locator('input[name="articleTitle"]')).toHaveValue(testData.entry.title0);
+    await expect(page.locator('input[name="publishDate"]')).toHaveValue(testData.entry.date);
+    await expect(page.locator('input[name="publishers"]')).toHaveValue(testData.entry.publisher);
 
     await page.locator('input[name="articleTitle"]').fill(testData.entry.title1);
     await page.locator('input[name="articleTitle"]').fill(testData.entry.title2);

@@ -8,17 +8,17 @@ test.describe('Event core functionality', () => {
 test('Verify that the user is able to update an event with valid required fields', async ({ page }) => {
     await EventSection(page);
     await expect (page.getByRole('heading', { name: 'Edit Event' })).toBeVisible();
-    await page.getByRole('textbox',{name: 'Abyei Area'}).click();
+    await page.getByRole('textbox',{name: testData.event.country1}).click();
     await page.locator('button[title="Afghanistan"]').click();
     //await page.locator('button[type="submit"]').click();
     await page.getByRole('button', { name: 'Submit' }).click();
     await page.waitForTimeout(2000);
     await expect(page.locator('._notification-container_12jid_37')).toBeVisible();
-    await expect(page.locator('._value_1hdvv_2').nth(0)).toContainText('Disaster');
-    await expect(page.locator('._value_1hdvv_2').nth(1)).toContainText('2026-02-01');
-    await expect(page.locator('._value_1hdvv_2').nth(2)).toContainText('2026-02-01');
-    await expect(page.locator('._value_1hdvv_2').nth(3)).toContainText('Earthquake');
-    await expect(page.getByRole('link',{name:'Afghanistan'})).toBeVisible();
+    await expect(page.locator('._value_1hdvv_2').nth(0)).toContainText(testData.event.disasterType);
+    await expect(page.locator('._value_1hdvv_2').nth(1)).toContainText(testData.event.startDate);
+    await expect(page.locator('._value_1hdvv_2').nth(2)).toContainText(testData.event.EndDate);
+    await expect(page.locator('._value_1hdvv_2').nth(3)).toContainText(testData.event.DisasterSubType);
+    await expect(page.getByRole('link',{name: testData.event.country2})).toBeVisible();
    // await expect(page.getByRole('link',{name:'Abyei Area'})).toBeVisible();
 
     
@@ -32,7 +32,7 @@ test('Verify that events cannot be updated with missing required fields', async 
 });
 test('Verify that the user is able to clone an existing event', async ({ page }) => {
     await page.getByRole('link', { name: 'events' }).click();
-    await page.getByRole('link', { name: 'Test Event Automation' }).click();
+    await page.getByRole('link', { name: testData.event.EventTittleOld }).click();
     await page.getByRole('button', { name: 'Clone Event' }).click();
     await expect (page.getByRole('heading', { name: 'Clone Event' })).toBeVisible();
     await page.locator('input[name="name"]').fill(testData.event.EventTittle);

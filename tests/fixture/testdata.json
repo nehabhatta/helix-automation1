@@ -1,0 +1,40 @@
+{
+  "figure": {
+    "event": "India Tsunami test",
+    "DisasterSubType1": "Tsunami",
+    "DisasterSubType2": "Earthquake",
+    "FigureCause": "Disaster",
+    "term": "Evacuated",
+    "quantifier1":"Approximately",
+    "quantifier2": "Exact",
+    "report": "1010",
+    "date": "2027"
+  },
+  "event": {
+    "country1": "Abyei Area",
+    "country2":"Afghanistan",
+    "disasterType": "Disaster",
+     "startDate": "2026-02-01",
+     "EndDate": "2026-02-01",
+     "DisasterSubType": "Earthquake",
+     "EventTittleOld": "Test Event Automation",
+    "EventTittle": "event created for testing purpose"
+  },
+  "entry": {
+    "event": "India Tsunami test",
+    "DisasterSubType1": "Tsunami",
+    "DisasterSubType2": "Earthquake",
+    "FigureCause": "Disaster",
+    "country1": "India",
+    "country2": "Pakistan",
+    "location": "c",
+    "MapLocation":"c, Johar Town, Punjab, Pakistan",
+    "url": "https://en.wikipedia.org/wiki/2004_Indian_Ocean_earthquake_and_tsunami",
+    "date":"2026-12-31",
+    "title0": "T3",
+    "publisher": "20 minutes - France",
+    "title1": "E3",
+    "title2": "",
+    "PublishDate": "2027"
+  }
+}

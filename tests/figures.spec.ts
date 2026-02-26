@@ -9,26 +9,26 @@ test('Verify that the user is able to update a figure with valid required fields
     await FigureSection(page);
 
     // initial assertion
-    await expect(page.locator('input[name="event"]')).toHaveValue('India Tsunami test');
-    await expect(page.locator('input[name="disasterSubType"]').nth(0)).toHaveValue('Tsunami');
-    await expect(page.locator('input[name="figureCause"]')).toHaveValue('Disaster');
-    await expect(page.locator('input[name="disasterSubType"]').nth(1)).toHaveValue('Earthquake');
-    await expect(page.locator('input[name="term"]')).toHaveValue('Evacuated');
-    await expect(page.locator('input[name="quantifier"]')).toHaveValue('Approximately');
-    await expect(page.locator('input[name="reported"]')).toHaveValue('1010');
+    await expect(page.locator('input[name="event"]')).toHaveValue(testData.figure.event);
+    await expect(page.locator('input[name="disasterSubType"]').nth(0)).toHaveValue(testData.figure.DisasterSubType1);
+    await expect(page.locator('input[name="figureCause"]')).toHaveValue(testData.figure.FigureCause);
+    await expect(page.locator('input[name="disasterSubType"]').nth(1)).toHaveValue(testData.figure.DisasterSubType2);
+    await expect(page.locator('input[name="term"]')).toHaveValue(testData.figure.term);
+    await expect(page.locator('input[name="quantifier"]')).toHaveValue(testData.figure.quantifier1);
+    await expect(page.locator('input[name="reported"]')).toHaveValue(testData.figure.report);
 
     await page.locator('[name="quantifier"]').click();
     await page.locator('button[title="Exact"]').click();
     await page.getByRole('button', { name: 'Submit' }).click();
     await expect(page.locator('._notification-container_12jid_37')).toBeVisible();
     //final assertion
-    await expect(page.locator('input[name="event"]')).toHaveValue('India Tsunami test');
-    await expect(page.locator('input[name="disasterSubType"]').nth(0)).toHaveValue('Tsunami');
-    await expect(page.locator('input[name="figureCause"]')).toHaveValue('Disaster');
-    await expect(page.locator('input[name="disasterSubType"]').nth(1)).toHaveValue('Earthquake');
-    await expect(page.locator('input[name="term"]')).toHaveValue('Evacuated');
-    await expect(page.locator('input[name="quantifier"]')).toHaveValue('Exact');
-    await expect(page.locator('input[name="reported"]')).toHaveValue('1010');
+    await expect(page.locator('input[name="event"]')).toHaveValue(testData.figure.event);
+    await expect(page.locator('input[name="disasterSubType"]').nth(0)).toHaveValue(testData.figure.DisasterSubType1);
+    await expect(page.locator('input[name="figureCause"]')).toHaveValue(testData.figure.FigureCause);
+    await expect(page.locator('input[name="disasterSubType"]').nth(1)).toHaveValue(testData.figure.DisasterSubType2);
+    await expect(page.locator('input[name="term"]')).toHaveValue(testData.figure.term);
+    await expect(page.locator('input[name="quantifier"]')).toHaveValue(testData.figure.quantifier2);
+    await expect(page.locator('input[name="reported"]')).toHaveValue(testData.figure.report);
 });
 /*test('Verify that figures cannot be updated with missing required fields', async ({ page }) => {
     await FigureSection(page);
