@@ -40,6 +40,35 @@ test('Verify that the user is able to clone an existing event', async ({ page })
     //await page.getByRole('')
     await page.getByRole('button', { name: 'Submit' }).click();
     await expect(page.locator('._notification-container_12jid_37')).toBeVisible();
+});
+test('verify the event delete features ', async({page}) =>{
+   await page.getByRole('link', { name: 'events' }).click();   
+   //deleting actuale event
+   await page.locator('input[name="createdByIds"]').fill('Apurba Subedi');
+   await page.locator('button[title="Apurba Subedi"]').click();
+   await page.getByRole('button',{name:"Apply"}).first().click();
+  
+   await expect(page.getByRole('link', {name: "Test Event Automation"})).toBeVisible();
+
+   await page.locator('button[title="Delete"]').click();
+   await page.getByRole('button',{name:'Confirm'}).click();
+  //assert 
+   await expect(page.locator('._notification-container_12jid_37')).toBeVisible();
+   await expect(page.getByRole('link', {name: "Test Event Automation"})).not.toBeVisible();
+
+   //deleting cloned event
+   await page.locator('input[name="createdByIds"]').fill('Apurba Subedi');
+   await page.locator('button[title="Neha Bhatta"]').click();
+   await page.getByRole('button',{name:"Apply"}).first().click();
+  
+   await expect(page.getByRole('link', {name: "Test Event Automation"})).toBeVisible();
+
+   await page.locator('button[title="Delete"]').click();
+   await page.getByRole('button',{name:'Confirm'}).click();
+  //assert 
+   await expect(page.locator('._notification-container_12jid_37')).toBeVisible();
+   await expect(page.getByRole('link', {name: "Test Event Automation"})).not.toBeVisible();
 
 });
+
 });

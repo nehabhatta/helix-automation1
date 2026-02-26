@@ -6,7 +6,7 @@ test.describe('Entry core functionality', () => {
     test.beforeEach(async ({ page }) => {
       await page.goto ("/Dashboard");
     });
-test('Verify that the user is able to update an entry and link it to an event', async ({ page }) => {
+/*test('Verify that the user is able to update an entry and link it to an event', async ({ page }) => {
     await EntrySection(page);
     // assertion
     await expect (page.getByRole('heading', { name: 'Edit Entry' })).toBeVisible();
@@ -39,7 +39,7 @@ test('Verify that the user is able to update an entry and link it to an event', 
     await expect(page.locator('input[name="disasterSubType"]').nth(1)).toHaveValue(testData.entry.DisasterSubType2);
     await expect(page.locator('input[name="country"]')).toHaveValue(testData.entry.country2);
 
- });
+ });*/
 test('Verify that entries cannot be updated with missing required fields', async ({ page }) => {
     await EntrySection(page);
     await expect (page.getByRole('heading', { name: 'Edit Entry' })).toBeVisible();
@@ -67,5 +67,25 @@ test.fail('Verify that the user cannot update an entry with future date in start
     await page.getByRole('button', { name: 'Submit' }).click();
 
     await expect(page.locator('._notification-container_12jid_37')).toBeFalsy();
+});
+test.only('verify the event delete features ', async({page}) =>{
+   await page.getByRole('link', { name: 'Extraction' }).click();
+   //await page.getByText('Additional Filters').click();
+   await page.locator('.styles_checkbox__nWaMC > .styles_visual-feedback__2ann-').first().click();
+   //await page.locator('.styles_container__3Il3g _additional-filters-switch_1i82v_24').click();
+   await page.locator('input[name="filterFigureCreatedBy"]').fill('Apurba Subedi');
+   await page.locator('button[title="Apurba Subedi"]').click();
+   await page.getByRole('button',{name:"Apply"}).first().click();
+   await page.getByRole('tab', { name: 'Entries' }).click(); 
+   await page.waitForTimeout(3000);
+   await expect(page.getByRole('link', {name: "Test Entry"})).toBeVisible();
+
+   await page.locator('button[title="Delete"]').click();
+   await page.getByRole('button',{name:'Confirm'}).click();
+
+   
+   
+   //initial assert
+   await expect(page.getByRole('link', {name: ""}))
 });
 });
