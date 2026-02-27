@@ -1,14 +1,15 @@
 {
   "figure": {
-    "event": "India Tsunami test",
+    "event": "Test Event Automation",
     "DisasterSubType1": "Tsunami",
     "DisasterSubType2": "Earthquake",
     "FigureCause": "Disaster",
     "term": "Evacuated",
-    "quantifier1":"Approximately",
-    "quantifier2": "Exact",
+    "quantifier2":"Approximately",
+    "quantifier1": "Exact",
     "report": "1010",
-    "date": "2027"
+    "date": "2027",
+    "textarea":"Test Figure"
   },
   "event": {
     "country1": "Abyei Area",
@@ -18,17 +19,18 @@
      "EndDate": "2026-02-01",
      "DisasterSubType": "Earthquake",
      "EventTittleOld": "Test Event Automation",
-    "EventTittle": "event created for testing purpose"
+    "EventTittle": "event created for testing purpose",
+    "eventDescription": "This is a test event created for automation testing purposes."
   },
   "entry": {
     "event": "Test Event Automation",
     "DisasterSubType1": "Tsunami",
     "DisasterSubType2": "Earthquake",
     "FigureCause": "Disaster",
-    "country1": "India",
-    "country2": "Pakistan",
-    "location": "c",
-    "MapLocation":"c, Johar Town, Punjab, Pakistan",
+    "country1": "Abyei Area",
+    "country2": "Afghanistan",
+    "locationOld": "a",
+    "MapLocationOld":"Sana'a City",
     "url": "https://en.wikipedia.org/wiki/List_of_earthquakes_in_Nepal",
     "date":"2026-02-01",
     "title0": "Test Entry",

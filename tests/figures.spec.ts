@@ -1,10 +1,24 @@
 import { test, expect} from '@playwright/test';
 import { FigureSection } from '../utils/figureFunctions';
+import { EntryCreation } from '../utils/EntryCreation';
+import { FigureCreation } from '../utils/FigureCreation';
+import { EventCreation } from '../utils/EventCreation';
+
 import testData from './fixture/testdata.json';
 test.describe('Figure core functionality', () => {
     test.beforeEach(async ({ page }) => {
       await page.goto ("/Dashboard");
     });
+
+test('Verify creating figure functionality',async ({ page }) => {
+      await EntryCreation(page);
+      await page.reload({waitUntil:'load'});
+      await EventCreation(page);
+      await page.reload({waitUntil:'load'});
+
+    await FigureCreation(page);  
+    await expect(page.locator('._notification-container_12jid_37')).toBeVisible();
+  });
 test('Verify that the user is able to update a figure with valid required fields', async ({ page }) => {
     await FigureSection(page);
 
@@ -47,6 +61,22 @@ test('Verify that the user cannot update an entry with future date in starting d
     await page.getByRole('button', { name: 'Submit' }).click();
     
     await expect(page.locator('.styles_error__1XTo6').getByText('Date should not be in the future')).toBeVisible();
+
+});
+test('verify the figure delete functionality', async({page}) => {
+   await page.getByRole('link', { name: 'Extraction' }).click();
+   await page.getByRole('tab', { name: 'Figures' }).click(); 
+   await page.waitForTimeout(3000);
+   const row = page.locator('tr:has-text("Apurba Subedi")');
+   await row.locator('button[title="Delete"]').click();
+   await page.getByRole('button',{name:'Confirm'}).click();
+   await expect(page.locator('._notification-container_12jid_37')).toBeVisible();
+   await page.reload({waitUntil: 'load'});
+   await expect(page.getByRole('button',{name:"Export"})).toBeVisible();
+   await expect(page.getByRole('button',{name:"Save Query"})).toBeVisible();
+   await expect(page.getByRole('tab', { name: 'Figures' })).toBeVisible();
+
+   await expect(page.getByRole('link', {name: "Test Entry"})).not.toBeVisible();
 
 });
 });
