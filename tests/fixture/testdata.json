@@ -1,12 +1,12 @@
 {
   "figure": {
     "event": "Test Event Automation",
-    "DisasterSubType1": "Tsunami",
+     "DisasterSubType1": "Tsunami",
     "DisasterSubType2": "Earthquake",
     "FigureCause": "Disaster",
     "term": "Evacuated",
-    "quantifier2":"Approximately",
-    "quantifier1": "Exact",
+    "quantifier1":"Approximately",
+    "quantifier2": "Exact",
     "report": "1010",
     "date": "2027",
     "textarea":"Test Figure"

@@ -1,6 +1,7 @@
 import { test, expect} from '@playwright/test';
 import { EventSection } from '../utils/EventFunctions';
-import { EventCreation } from '../utils/EventCreation';
+import { EventCreation } from '../utils/EventFunctions';
+import { deleteEvent } from '../utils/EventFunctions';
 import testData from './fixture/testdata.json';
 test.describe('CRUD functionality of Event Features', () => {
     test.beforeEach(async ({ page }) => {
@@ -54,45 +55,11 @@ test('Verify that events cannot be updated with missing required fields', async 
 
     await expect(page.locator('.styles_error__1XTo6').getByText('The field is required')).toBeVisible();
 });
-// test('Verify that the user is able to clone an existing event', async ({ page }) => {
-//     await page.getByRole('link', { name: 'events' }).click();
-//     await page.getByRole('link', { name: testData.event.EventTittleOld }).click();
-//     await page.getByRole('button', { name: 'Clone Event' }).click();
-
-//     await expect (page.getByRole('heading', { name: 'Clone Event' })).toBeVisible();
-
-//     await page.locator('input[name="name"]').fill(testData.event.EventTittle);
-//     await page.getByRole('button', { name: 'Submit' }).click();
-
-//     await expect(page.locator('._notification-container_12jid_37')).toBeVisible();
-// });
 test('verify the event delete features ', async({page}) =>{
-   await page.getByRole('link', { name: 'events' }).click();   
-   //deleting actuale event
-   await page.locator('input[name="createdByIds"]').fill('Apurba Subedi');
-   await page.locator('button[title="Apurba Subedi"]').click();
-   await page.getByRole('button',{name:"Apply"}).first().click();
-  
-   await expect(page.getByRole('link', {name: testData.event.EventTittleOld})).toBeVisible();
-
-   await page.locator('button[title="Delete"]').click();
-   await page.getByRole('button',{name:'Confirm'}).click();
+   await deleteEvent(page);
   //assert 
    await expect(page.locator('._notification-container_12jid_37')).toBeVisible();
    await expect(page.getByRole('link', {name: testData.event.EventTittleOld})).not.toBeVisible();
-
-//    //deleting cloned event
-//    await page.locator('input[name="createdByIds"]').fill('Apurba Subedi');
-//    await page.locator('button[title="Apurba Subedi"]').click();
-//    await page.getByRole('button',{name:"Apply"}).first().click();
-  
-//    await expect(page.getByRole('link', {name: testData.event.EventTittle})).toBeVisible();
-
-//    await page.locator('button[title="Delete"]').click();
-//    await page.getByRole('button',{name:'Confirm'}).click();
-//   //assert 
-//    await expect(page.locator('._notification-container_12jid_37')).toBeVisible();
-//    await expect(page.getByRole('link', {name: testData.event.EventTittle})).not.toBeVisible();
 
 });
 
